@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupNavigation() {
         const navContainer = document.querySelector('nav');
+        const navButtons = [];
         const pages = document.querySelectorAll('.page-content');
         const navItems = [
             { id: 'main-menu-page', icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mb-1" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>', label: 'Main Menu' },
@@ -82,12 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (item.id === 'main-menu-page') button.classList.add('active-nav');
             
             button.addEventListener('click', () => {
-                pages.forEach(page => page.classList.add('hidden'));
+                pages.forEach(p => p.classList.remove('is-active'));
                 const targetPage = document.getElementById(item.id);
-                targetPage.classList.remove('hidden');
-                document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active-nav'));
+                targetPage.classList.add('is-active');
+                navButtons.forEach(btn => btn.classList.remove('active-nav'));
                 button.classList.add('active-nav');
             });
+            navButtons.push(button);
             navContainer.appendChild(button);
         });
     }
@@ -100,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slide.innerHTML = `<div class="gallery-card" data-id="${memory.id}"><img src="${memory.image}" alt="${memory.title}" loading="lazy"><div class="overlay"><h4>${memory.title}</h4></div></div>`;
             galleryWrapper.appendChild(slide);
         });
+
         new Swiper('.swiper-container', {
             effect: 'coverflow',
             grabCursor: true,
