@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // Aktifkan mode gelap berbasis class
   darkMode: 'class',
   content: [
     "./*.{html,js}",
@@ -8,7 +7,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Menambahkan animasi custom untuk digunakan di HTML
       keyframes: {
         'fade-in-up': {
           '0%': { opacity: '0', transform: 'translateY(20px)' },

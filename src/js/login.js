@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage = document.getElementById('error-message');
 
     if (loginContainer) {
+        // Initial animation for the login container
         loginContainer.style.animation = 'fade-in-up 0.8s forwards ease-out';
         loginContainer.style.opacity = '1'; 
     }
@@ -24,16 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const isPasswordValid = password === 'SETIAPMALAMDIBOBOIN';
 
             if (isUsernameValid && isPasswordValid) {
+                // On successful login, fade out the body and redirect
                 document.body.style.animation = 'fade-out 0.5s forwards ease-in';
                 setTimeout(() => {
                     window.location.href = 'home.html';
                 }, 500);
 
             } else {
+                // On failed login, show error and shake animation
                 errorMessage.textContent = 'Ups, coba lagi ya sayang ♡';
                 errorMessage.classList.remove('hidden');
                 loginContainer.classList.add('animate-shake');
                 
+                // Remove shake animation class after it finishes
                 setTimeout(() => {
                     loginContainer.classList.remove('animate-shake');
                 }, 820);
