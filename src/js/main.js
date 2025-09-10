@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 modifier: 1,
                 slideShadows: true,
             },
-            // Add navigation for the new buttons
             navigation: {
                 nextEl: '.gallery-next',
                 prevEl: '.gallery-prev',
